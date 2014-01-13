@@ -1,0 +1,58 @@
+/* GRID */
+nav, div, article, section, footer, header {
+	display: block;
+	position: relative;
+}
+
+.padded {
+	padding-left: 17%;
+	padding-right: 17%;
+
+	@include breakpoint(large) {
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+	@include breakpoint(landscape) {
+		padding-left: 12%;
+		padding-right: 12%;
+	}
+	@include breakpoint(portrait) {
+		padding-left: 8%;
+		padding-right: 8%;
+	}
+	@include breakpoint(mobile) {
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+}
+
+#sub-nav {
+	left: 17%;
+	right: 17%;
+
+	@include breakpoint(large) {
+		left: 20%;
+		right: 20%;
+	}
+	@include breakpoint(landscape) {
+		left: 12%;
+		right: 12%;
+	}
+	@include breakpoint(portrait) {
+		left: 8%;
+		right: 8%;
+	}
+	@include breakpoint(mobile) {
+		left: 2%;
+		right: 2%;
+	}
+}
+
+#container {
+	@include opacity(1);
+	@include transition(0.15s);
+
+	&.hidden {
+		@include opacity(0);
+	}
+}

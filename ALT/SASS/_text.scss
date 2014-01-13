@@ -1,0 +1,22 @@
+/* TEXT SETTINGS */
+h1,
+h2 {
+	font-family: "brandon-grotesque", sans-serif;
+	font-weight: 700;
+}
+h1 {
+	color: yellow;
+	-webkit-font-smoothing: antialiased;
+	@include rem(font-size,2rem);
+	text-align: center;
+	@include text-shadow(0 0 10px rgba(black,0.6));
+}
+h2 {
+	font-weight: 700;
+	color: lighten(black,20%);
+	@include rem(font-size,2.75rem);
+}
+
+a {
+	text-decoration: none;
+}

@@ -1,0 +1,136 @@
+/* TEXT SETTINGS */
+h1 {
+	font-family: "futura-pt", sans-serif;
+	color: $main;
+	@include rem(font-size,2.3rem);
+	font-weight: 700;
+	text-align: center;
+
+	a {
+		color: $main;
+		text-decoration: none;
+	}
+}
+
+h2 {
+	font-family: "futura-pt", sans-serif;
+	text-align: center;
+	font-weight: 700;
+	@include rem(font-size,2.15rem);
+	color: $main;
+	display: block;
+	position: relative;
+}
+
+hr {
+	@include rem(margin,1.75rem auto);
+	position: relative;
+	width: 16%;
+	background: $main;
+	border: 0;
+	height: 4px;
+	display: block;
+}
+
+p {
+	font-family: "garamond-premier-pro-caption", georgia, serif;
+	@include rem(font-size,1.1rem);
+	line-height: 1.5;
+
+	.info-box & {
+		@include rem(margin-bottom,1rem);
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+}
+.info-box a,
+.button {
+	display: table;
+	//@include rem(margin,2rem auto 2.25rem auto);
+	@include rem(margin,2rem auto 0 auto);
+	text-align: center;
+	font-family: "futura-pt", sans-serif;
+	border: 3px solid $main;
+	padding: 1.5em 1.7em 1.5em 2em;
+	color: $main;
+	text-transform: uppercase;
+	@include rem(font-size,0.7rem);
+	letter-spacing: 0.3em;
+	font-weight: 700;
+	@include transition(0.15s);
+
+	&:hover {
+		background: $main;
+		color: white;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+.info-box p a {
+	display: inline-block;
+	padding: 0 3px;
+	margin: 0;
+	border: 0;
+	letter-spacing: 0.1em;
+	font-size: 0.75em;
+	@include transition(0.15s);
+}
+
+
+.front-year,
+.front-category {
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: "futura-pt", sans-serif;
+	font-weight: 600;
+	color: white;
+	-webkit-font-smoothing: antialiased;
+	@include transition(0.25s);
+}
+.front-year {
+	@include rem(top,1rem);
+	@include rem(font-size,0.875rem);
+}
+.front-category {
+	@include rem(bottom,1rem);
+	@include rem(font-size,0.7rem);
+}
+
+
+.post-credit,
+.post-year {
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: "futura-pt", sans-serif;
+}
+.post-credit {
+	@include rem(font-size,0.7rem);
+	font-weight: 500;
+	@include opacity(0.75);
+	@include rem(margin-bottom,0.15rem);
+
+	&:first-of-type {
+		@include rem(margin-top,2.25rem);
+	}
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+	strong {
+		font-weight: 600;
+	}
+}
+.post-year {
+	font-weight: 600;
+	@include rem(font-size,1.15rem);
+	@include rem(margin-top,0.75rem);
+}

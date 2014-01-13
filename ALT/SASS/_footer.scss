@@ -1,0 +1,5 @@
+/* FOOTER */
+footer {
+	@include rem(margin-top,1.5rem);
+	@include rem(margin-bottom,2.5rem);
+}

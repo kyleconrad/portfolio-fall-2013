@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" itemscope itemtype="http://schema.org/WebPage">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+    <!-- All coding, design, ideas, fantastical inventions, etc. etc. © 2013 Kyle Conrad -->
+    <!-- Contact: kyle@kyleconrad.com -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Kyle Conrad</title>
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icon-114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icon-114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icon-144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="touch-icon-144.png" />
+
+    <link rel="icon" href="fav16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="fav32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="fav48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="fav64.png" sizes="64x64" type="image/png">
+    <link rel="icon" href="fav128.png" sizes="128x128" type="image/png">
+
+    <link rel="icon" href="fav32.png">
+    <!--[if IE]><link rel="shortcut icon" href="favicon.ico"><![endif]-->
+
+    <meta name="msapplication-TileColor" content="#D83434">
+    <meta name="msapplication-TileImage" content="fav144.png">
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="JS/lazyload.js"></script>
+    <script type="text/javascript" src="JS/djax.js"></script>
+
+    <script type="text/javascript" src="//use.typekit.net/bip0jmn.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="JS/html5shiv.js"></script>
+        <script type="text/javascript" src="JS/selectivizr.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<nav>
+    <div id="nav-container" class="padded">
+        <div id="main-nav">
+            <h1><a href="index.html"><span class="page-title"></span>Kyle Conrad</a> <span class="post-spacer">&nbsp;&#xd7;&nbsp;</span> <span class="post-title"></span></h1>
+
+            <a href="#" id="menu-button">&#9776;</a>
+        </div>
+
+        <ul id="sub-nav">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="page.html">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="container" class="ajax-load">
+
+    <article class="padded single-post">
+        <div style="width: 100%; height: 500px;"></div>
+    </article>
+
+</div>
+
+<footer class="padded clearfix">
+    <ul class="clearfix">
+        <li><a href="mailto:kyle@kyleconrad.com">Email</a></li>
+        <li><a href="http://www.twitter.com/kyle_conrad" target="_blank">Twitter</a></li>
+        <li><a href="http://blog.kyleconrad.com" target="_blank">Tumblr</a></li>
+        <li><a href="http://instagram.com/kyle_conrad" target="_blank">Instagram</a></li>
+    </ul>
+</footer>
+
+<ul id="load-box" class="active loading">
+    <li><span class="load-bar"></span></li>
+    <li><span class="load-bar"></span></li>
+    <li><span class="load-bar"></span></li>
+    <li><span class="load-bar"></span></li>
+</ul>
+
+<script type="text/javascript">
+    jQuery(function($) {
+        //DETERMINE MOBILE
+        if (navigator.userAgent.match(/mobile/i)) {
+            $('body').addClass('mobile');
+        }
+
+        // AJAX LOADING
+        $('body').djax('.ajax-load');
+
+        loadPage();
+
+        // STICKY NAV + FUNCTION
+        $(document).scroll(function(){
+            if ($(window).scrollTop() >= ($('nav').outerHeight()-55)) {
+                $('#nav-container').addClass('fixed');
+            }
+            else {
+                $('#nav-container').removeClass('fixed');
+            }
+        });
+        $('#menu-button').click(function(){
+            $('#nav-container, #menu-button').toggleClass('active');
+            return false;
+        });
+
+        function loadPage() {
+            // LAZY LOADING
+            $('img').lazyload({
+                effect: "fadeIn",
+                skip_invisible: false,
+                threshold: 250
+            });
+
+            // DETERMINE POST OR PAGE
+            if ($('article').hasClass('single-post')) {
+                $('#main-nav').addClass('post');
+            }
+            else if ($('article').hasClass('single-page')) {
+                $('#main-nav').addClass('page');
+            }
+
+
+            // PAGE & POST VARIABLES
+            var postcolor = $('article').attr('data-post-color');
+            var posttitle = $('article').attr('data-post-title');
+
+            // SINGLE POST COLORS & INFO
+            $('.single-post').each(function(){
+                // COLOR FOR POSTS
+                $(this).find('h2, .info-box a, .post-year').css('color',postcolor);
+                $(this).find('.info-box, a').css('border-color',postcolor);
+                $(this).find('hr').css('background',postcolor);
+                $('nav .post-title').css('color',postcolor);
+
+                $(this).find('.info-box a').hover(
+                    function () {
+                        $(this).css('background',postcolor).css('color','white').css('-webkit-font-smoothing','antialiased');
+                    },
+                    function () {
+                        $(this).css('background','none').css('color',postcolor).css('-webkit-font-smoothing','subpixel-antialiased');
+                    }
+                );
+
+                // TITLE FOR POSTS
+                $('nav .post-title').html('' + posttitle + '');
+            });
+
+            // RELATED POST LINKS
+            $('.post-navigation a').each(function(){
+                var postcolor = $(this).attr('data-post-color');
+
+                $(this).hover(
+                    function () {
+                        $(this).css('background',postcolor);
+                    },
+                    function () {
+                        $(this).css('background','none');
+                    }
+                );
+            })
+        }
+    });
+</script>
+
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="JS/css3-mediaqueries.js"></script>
+<![endif]-->
+
+</body>
+</html>
